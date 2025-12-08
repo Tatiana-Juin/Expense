@@ -8,15 +8,21 @@ function App() {
   const [depenseEdit,setDepenseEdit] = useState(false)
 
   return (
-    <>
-      <h1> Expense - Gestionnaire de depense </h1>
-      <button onClick={()=>setDepenseEdit(true)}>Nouvelle depense</button>
+    <div className='max-w-2xl mx-auto p-4 md:p-8 min-h-screen bg-gray-50'>
+      {/* TITRE DE LA PAGE */}
+      <h1 className='text-3xl font-extrabold text-center text-gray-800 mb-8'> Expense - Gestionnaire de depense </h1>
+
+      {/* POUR FAIRE APPARAITRE LE FORMULAIRE */}
+      <div className='flex justify-center mb-10'>
+          <button className="px-6 py-3 text-lg font-medium text-white bg-green-600 rounded-lg shadow-md hover:bg-green-700 transition duration-300 ease-in-out focus:outline-none focus:ring-4 focus:ring-green-300" onClick={()=>setDepenseEdit(true)}>Nouvelle depense</button>
+      </div>
+      
       
       {/* CONDITION POUR AFFICHER LE FORMULAIRE  */}
       {depenseEdit && (
         <NewExpenseForm setDepenseEdit={setDepenseEdit} />
       )}
-    </>
+    </div>
   )
 }
 
