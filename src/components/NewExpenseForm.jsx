@@ -1,12 +1,14 @@
-import React from 'react'
-
-
 export default function NewExpenseForm({setDepenseEdit}) {
+
+  const handleSubmit = ()=>{
+    console.log("handleSubmit")
+  }
+
   return (
     <>
-        <h2>Ajouter une taches</h2>
+        <h2 >Ajouter une taches</h2>
         <div>
-          <form action="">
+          <form action="" onSubmit={handleSubmit}>
               {/* nom de la depense  */}
               <label htmlFor="nomExpense">Nom</label>
               <input type="text" name="nomExpense" id="" />
