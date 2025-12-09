@@ -5,7 +5,8 @@ import NewExpenseForm from './components/NewExpenseForm'
 import ExpenseList from './components/ExpenseList'
 function App() {
   // POUR FAIRE SWITCHER AJOUT DEPENSE
-  const [depenseEdit,setDepenseEdit] = useState(false)
+  const [depenseEdit,setDepenseEdit] = useState(false);
+  
   // Pour le tableau dynamique 
   const [datas, setDatas] = useState(data);
   const [newExpense,setNewExpense] = useState("");
