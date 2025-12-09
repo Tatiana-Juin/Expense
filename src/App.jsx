@@ -6,6 +6,11 @@ import ExpenseList from './components/ExpenseList'
 function App() {
   // POUR FAIRE SWITCHER AJOUT DEPENSE
   const [depenseEdit,setDepenseEdit] = useState(false)
+  // Pour le tableau dynamique 
+  const [datas, setDatas] = useState(data);
+  const [newExpense,setNewExpense] = useState("");
+  const [newDate,setNewDate] = useState("");
+  const [newMontant,setNewMontant] = useState(0);
 
   return (
     <div className='max-w-2xl mx-auto p-4 md:p-8 min-h-screen bg-gray-50'>
@@ -20,8 +25,11 @@ function App() {
       
       {/* CONDITION POUR AFFICHER LE FORMULAIRE  */}
       {depenseEdit && (
-        <NewExpenseForm setDepenseEdit={setDepenseEdit} />
+        <NewExpenseForm datas={datas} setDatas={setDatas} setDepenseEdit={setDepenseEdit} newExpense={newExpense} setNewExpense={setNewExpense} newDate={newDate} setNewDate={setNewDate} newMontant={newMontant} setNewMontant={setNewMontant} />
       )}
+
+      <ExpenseList datas={datas} setDatas={setDatas} />
+
     </div>
   )
 }
