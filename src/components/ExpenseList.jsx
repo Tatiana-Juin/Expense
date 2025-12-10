@@ -1,6 +1,8 @@
 // import React from 'react'
 
 export default function ExpenseList({datas,setDatas}) {
+  // POUR FILTRER ET EMPECHER QUE LA LIGNE AYANT ID NULL SOIT AFFICHER , RECUPERER
+  const filteredDatas = datas.filter(dataExpense => dataExpense.id !== null);
   return (
     <div className="shadow-lg rounded-xl overflow-hidden bg-white mt-8">
       {/* TABLEAU POUR AFFICHER LES VALEURS  */}
@@ -20,7 +22,7 @@ export default function ExpenseList({datas,setDatas}) {
             </tr>
         </thead>
         <tbody>
-          {datas.map((dataExpense) =>(
+          {filteredDatas.map((dataExpense) =>(
 
             <tr key={dataExpense.id} className="hover:bg-gray-50 transition duration-150 ease-in-out">
               <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"> {dataExpense.nom} </td>
