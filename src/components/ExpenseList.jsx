@@ -2,15 +2,36 @@
 
 export default function ExpenseList({datas,setDatas}) {
   return (
-    <div>
+    <div className="shadow-lg rounded-xl overflow-hidden bg-white mt-8">
+      {/* TABLEAU POUR AFFICHER LES VALEURS  */}
+      <table className="min-w-full divide-y divide-gray-200">
+        
+        <thead className="bg-gray-50">
+            <tr>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Nom de la dépense
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Date
+              </th>
+              <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Montant (€)
+              </th>
+            </tr>
+        </thead>
+        <tbody>
+          {datas.map((dataExpense) =>(
+
+            <tr key={dataExpense.id} className="hover:bg-gray-50 transition duration-150 ease-in-out">
+              <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"> {dataExpense.nom} </td>
+              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500"> {dataExpense.date} </td>
+              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-right font-semibold" > {dataExpense.montant}  </td>
+            </tr>
+          ) )}
+        </tbody>
+       
+      </table>
       
-      {datas.map((dataExpense) =>(
-        <ul key={dataExpense.id}>
-          <li > {dataExpense.nom} </li>
-          <li> {dataExpense.date} </li>
-          <li> {dataExpense.montant} </li>
-        </ul>
-      ) )}
       
     </div>
   )

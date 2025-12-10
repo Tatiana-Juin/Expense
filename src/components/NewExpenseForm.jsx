@@ -17,23 +17,10 @@ export default function NewExpenseForm({datas,setDatas,setDepenseEdit,newExpense
       setErrorMessage("Attention il faut remplir le champs c'est obligatoire")
       return;
     }
-
-    // POUR EVITER L'ERREUR VIS A VIS DE LA CONDITION DE LA DATE ON DIT QUE LA DATE AUJOURD'HUI ET A 0000
-    const today = new Date;
-    today.setHours(0,0,0,0);
-
-    const formattedDate = newDate ? new Date(newDate).toLocaleDateString("fr-FR") : new Date().toLocaleDateString("fr-FR"); 
+    
+    const formattedDate = new Date(newDate ?? Date.now()).toLocaleDateString("fr-FR");
   
-    // COMPARER LES DEUX DATE 
-    if(new Date(newDate) < today){
-      setErrorMessage("La date ne peut pas etre inferrieur a celle d'aujourd'hui ")
-      return;
-    }
-    
-    // VIDE SETERREOR MESSAGE 
-    
-
-    // NOUVEAU TABLEAU 
+    // NOUVEAU OBJET 
     const newExpenseTab = {
       id : Date.now(),
       nom : newExpense,
@@ -42,18 +29,16 @@ export default function NewExpenseForm({datas,setDatas,setDepenseEdit,newExpense
     }
 
     setDatas([...datas,newExpenseTab]);
+    
     setNewExpense("");
     setNewDate("");
     setNewMontant(0)
     setDepenseEdit(false);
-    
-    // FAIRE RETURN AVEC SPREAD OPERATOR
-    
   }
 
   return (
     <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-xl shadow-lg">
-        <h2 className="text-2xl font-semibold text-gray-800 mb-6 text-center">Ajouter une taches</h2>
+        <h2 className="text-2xl font-semibold text-gray-800 mb-6 text-center">Ajouter une dépense</h2>
         
           <form action="post" onSubmit={handleAddExpense} className="space-y-4">
 
